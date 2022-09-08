@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var currency = ""
+  
     var body: some View {
         
             VStack{
             Text("محول العملات العجيب!")
-                .padding()
+                .padding(50)
                 .font(.largeTitle)
             TextField("العملة بالدينار", text : $currency)
+                    .multilineTextAlignment(.center)
                     .padding(20)
                     .font(.subheadline)
                     .overlay(
@@ -24,18 +26,19 @@ struct ContentView: View {
                                 .padding(10)
                         )
                     .padding()
-                
-                    Text("🇺🇸  $\((Double(currency) ?? 0) * 3.28)")
-                        .font(.title)
-                    Text("🇬🇧  £\((Double(currency) ?? 0) * 2.46)")
-                        .font(.title)
-                        .padding()
-                    Text("🇪🇺  €\((Double(currency) ?? 0) * 2.70)")
-                        .font(.title)
+          
+                Text("🇺🇸  $\(String(format: "%.2f", (Double(currency) ?? 0) * 3.28))")
+                    .font(.title)
+                Text("🇬🇧  £\(String(format: "%.2f", (Double(currency) ?? 0) * 2.46))")
+                    .font(.title)
+                    .padding()
+                Text("🇪🇺  €\(String(format: "%.2f", (Double(currency) ?? 0) * 2.70))")
+                    .font(.title)
+
                 Spacer()
                 Image("currency")
                     .resizable()
-                    .frame(width: 350, height: 160)
+                    .frame(width: 430, height: 200)
                 
                 
             
